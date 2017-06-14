@@ -14,7 +14,7 @@
         <!--用户名-->
         <property name="connection.username">root</property>
         <!--密码-->
-        <property name="connection.password">a10100</property>
+        <property name="connection.password">xxx</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">10</property>
