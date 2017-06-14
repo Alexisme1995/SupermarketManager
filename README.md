@@ -29,30 +29,46 @@
 登录
 
 
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/1.jpg)
+
 
 添加账单(0,1)，查看详细账单(0,1)，更改账单信息(0,1)，删除账单(0,1)，综合查询(0,1)
 
+
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/2.jpg)
 
 
 
 添加供应商(0)，查看供应商详细信息(0,1)，更改供应商资料(0)，删除供应商(0)，综合查询(0,1)
 
 
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/3.jpg)
+
 
 
 添加用户(0)，查看用户详细信息(0,1)，更改用户信息(0,3)，删除用户(0,3)，更改用户密码(0,3)，综合查询(0,1)
 
+
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/4.jpg)
+
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/6.jpg)
+
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/7.jpg)
+
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/8.jpg)
 
 
 
 操作日志(0,1)，综合查询(0,1)
 
 
-
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/5.jpg)
 
 
 退出登录
 
+
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/9.jpg)
 
 
 
