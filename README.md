@@ -29,7 +29,7 @@
 登录
 
 
-![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/raw/master/1.jpg)
+![image](https://github.com/Alexisme1995/SupermarketManagerSystem/image/1.jpg)
 
 
 添加账单(0,1)，查看详细账单(0,1)，更改账单信息(0,1)，删除账单(0,1)，综合查询(0,1)
