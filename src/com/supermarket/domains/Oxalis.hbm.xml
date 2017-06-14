@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.supermarket.domains.Oxalis">
+        <id name="olsId">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="userId" lazy="false" cascade="all"/>
+        <many-to-one name="serveId" lazy="false" cascade="all"/>
+        <set name="logs" cascade="all" lazy="true">
+            <key column="logTargetOxalis" />
+            <one-to-many class="com.supermarket.domains.Logs" />
+        </set>
+        <property name="olsPayment"/>
+        <property name="olsPicture"/>
+        <property name="olsUnit"/>
+        <property name="olsWarename"/>
+        <property name="createtime"/>
+        <property name="olsNunber"/>
+        <property name="olsMoney"/>
+    </class>
+</hibernate-mapping>

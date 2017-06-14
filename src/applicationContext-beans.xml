@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    <bean id="userService" class="com.supermarket.services.UserServiceImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="logService" ref="logService"/>
+    </bean>
+    <bean id="oxalisService" class="com.supermarket.services.OxalisServiceImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="logService" ref="logService" />
+    </bean>
+    <bean id="serveService" class="com.supermarket.services.ServeServiceImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="logService" ref="logService"/>
+    </bean>
+    <!--日志记录Bean-->
+    <bean id="logService" class="com.supermarket.services.LogServiceImpl" scope="prototype">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean name="loginAction" class="com.supermarket.actions.loginAction" scope="prototype">
+        <property name="us" ref="userService"/>
+    </bean>
+
+    <bean name="userAction" class="com.supermarket.actions.userAction" scope="prototype">
+        <property name="us" ref="userService"/>
+    </bean>
+
+    <bean name="serveAction" class="com.supermarket.actions.serveAction" scope="prototype">
+        <property name="ss" ref="serveService"/>
+    </bean>
+
+    <bean name="oxalisAction" class="com.supermarket.actions.oxalisAction">
+        <property name="os" ref="oxalisService" />
+        <property name="ss" ref="serveService" />
+    </bean>
+    <import resource="applicationContext-commons.xml"/>
+</beans>

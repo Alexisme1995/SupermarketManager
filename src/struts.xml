@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!--配置/dwr的所有请求放行-->
+    <constant name="struts.action.excludePattern" value="/dwr.*"/>
+    <!--动态调用-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <!--调试模式-->
+    <constant name="struts.devMode" value="true"/>
+    <package name="supermarket" namespace="/" extends="struts-default">
+
+        <action name="login" class="loginAction">
+            <result type="redirect">/index.jsp</result>
+            <result name="error">/WEB-INF/failed.jsp</result>
+        </action>
+
+        <!--用户Action-->
+        <action name="user" class="userAction">
+            <result type="redirect">/index.jsp</result>
+            <result name="error">/WEB-INF/failed.jsp</result>
+        </action>
+
+        <action name="serve" class="serveAction">
+            <result>/index.jsp</result>
+            <result name="error">/WEB-INF/failed.jsp</result>
+        </action>
+
+        <action name="oxalis" class="oxalisAction">
+            <result>/index.jsp</result>
+            <result name="error">/WEB-INF/failed.jsp</result>
+        </action>
+    </package>
+</struts>

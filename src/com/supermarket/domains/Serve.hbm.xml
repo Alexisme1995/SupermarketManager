@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.supermarket.domains.Serve">
+        <id name="serveId">
+            <generator class="native"></generator>
+        </id>
+        <property name="serveAddress"/>
+        <property name="serveName"/>
+        <property name="servePhone"/>
+        <property name="servePicture"/>
+        <property name="serveRelation"/>
+        <property name="createtime"/>
+        <set name="oxalis" cascade="all" lazy="true">
+            <key column="serveId"/>
+            <one-to-many class="com.supermarket.domains.Oxalis"/>
+        </set>
+
+        <set name="logs" cascade="all" lazy="true">
+            <key column="logServe"/>
+            <one-to-many class="com.supermarket.domains.Logs"/>
+        </set>
+    </class>
+</hibernate-mapping>

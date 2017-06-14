@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.supermarket.domains.User" table="USERS">
+        <id name="userId">
+            <generator class="native"/>
+        </id>
+        <set name="forMylogs" cascade="all" lazy="true">
+            <key column="logOP"/>
+            <one-to-many class="com.supermarket.domains.Logs"/>
+        </set>
+
+        <set name="myLogs" cascade="all" lazy="true">
+            <key column="logTargetUser"/>
+            <one-to-many class="com.supermarket.domains.Logs"/>
+        </set>
+
+        <set name="oxalis" cascade="all" lazy="true">
+            <key column="userId"/>
+            <one-to-many class="com.supermarket.domains.Oxalis"/>
+        </set>
+
+        <property name="userAddress"/>
+        <property name="userName"/>
+        <property name="userPhone"/>
+        <property name="userPwd"/>
+        <property name="userYear"/>
+        <property name="userSex"/>
+        <property name="userRank"/>
+    </class>
+
+</hibernate-mapping>

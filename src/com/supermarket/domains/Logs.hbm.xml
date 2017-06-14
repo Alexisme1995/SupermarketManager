@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.supermarket.domains.Logs" lazy="false">
+        <id name="logID">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="logOP" lazy="false"/>
+        <many-to-one name="logTargetUser" lazy="false"/>
+        <many-to-one name="logTargetOxalis" lazy="false"/>
+        <many-to-one name="logServe" lazy="false"/>
+        <property name="logDetails"/>
+        <property name="logTime"/>
+        <property name="logIP"/>
+    </class>
+</hibernate-mapping>

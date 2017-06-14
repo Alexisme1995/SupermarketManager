@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    <!--启用Aspectj对Annotation的支持-->
+
+    <!--指定强制使用CGLIB来生成代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--Spring提供的Session生成方案-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="configLocation">
+            <!--指定Hibernate配置文件的位置，classpath表示相对src目录位置-->
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+    </bean>
+
+    <!--Spring提供的事务管理方案-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <!--事物需要Session，注入Session-->
+        <property name="sessionFactory">
+            <ref bean="sessionFactory"/>
+        </property>
+    </bean>
+
+    <!--AOP配置（切入点）-->
+    <aop:config>
+        <!--定义切入点，切入com.Hi_old.manager下所有类，所有方法-->
+        <aop:pointcut id="allManagerMethod" expression="execution(* com.supermarket.services.*.*(..))"/>
+        <!--指定事物的传播特性引用-->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod"/>
+    </aop:config>
+    <!--详细的传播特性配置-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="reg" propagation="REQUIRED"/>
+            <tx:method name="login" propagation="REQUIRED"/>
+            <tx:method name="log" propagation="REQUIRED"/>
+            <tx:method name="UserCount" propagation="REQUIRED"/>
+            <tx:method name="QueryUser" propagation="REQUIRED"/>
+            <tx:method name="Isfriendexist" propagation="REQUIRED"/>
+            <tx:method name="addFriend" propagation="REQUIRED"/>
+            <tx:method name="delFriend" propagation="REQUIRED"/>
+            <tx:method name="deleteUser" propagation="REQUIRED"/>
+            <tx:method name="userLog" propagation="REQUIRED"/>
+            <tx:method name="serveLog" propagation="REQUIRED" />
+            <tx:method name="addUser" propagation="REQUIRED"/>
+            <tx:method name="changedetails" propagation="REQUIRED" />
+            <tx:method name="changePwd" propagation="REQUIRED"/>
+            <tx:method name="updateServe" propagation="REQUIRED"/>
+            <tx:method name="addServe" propagation="REQUIRED" />
+            <tx:method name="deleteServe" propagation="REQUIRED"/>
+            <tx:method name="updateOxalis" propagation="REQUIRED"/>
+            <tx:method name="addOxalis" propagation="REQUIRED"/>
+            <tx:method name="deleteOxalis" propagation="REQUIRED"/>
+            <!--指定查询的Session为只读，提高特性-->
+            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+</beans>

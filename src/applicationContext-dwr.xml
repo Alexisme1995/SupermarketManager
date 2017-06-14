@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+
+    <dwr:configuration>
+        <!--配置转换器-->
+        <dwr:convert type="collection" class="java.util.List"/>
+        <!--bean转换器-->
+        <dwr:convert type="bean" class="com.supermarket.domains.User">
+            <dwr:param name="include" value="userId,userName,userSex,userYear,userPhone,userAddress,userRank"/>
+        </dwr:convert>
+
+        <!--供应商Bean转换器-->
+        <dwr:convert type="bean" class="com.supermarket.domains.Serve">
+            <dwr:param name="include"
+                       value="serveId,serveName,servePicture,serveRelation,servePhone,serveAddress"/>
+        </dwr:convert>
+
+        <!--账单DTO-->
+        <dwr:convert type="bean" class="com.supermarket.dto.OxalisTransfer">
+            <dwr:param name="include"
+                       value="olsId,olsMoney,allServe,olsUnit,olsNunber,olsWarename,olsPicture,olsPayment,createtime,serveId,serveName,userId,userName"/>
+        </dwr:convert>
+
+        <!--操作记录DTO-->
+        <dwr:convert type="bean" class="com.supermarket.dto.LogsTransfer">
+            <dwr:param name="include"
+                       value="logID,targetName,opID,opName,targetID,targetOxlID,targetOxlName,targetServeID,targetServeName,logDetails,logTime,logIP"/>
+        </dwr:convert>
+
+        <!--用户信息DTO转换器-->
+        <dwr:convert type="bean" class="com.supermarket.dto.UserTransfer">
+            <dwr:param name="include"
+                       value="isCurrentUser,currentUserRank,userId,userName,userSex,userYear,userPhone,userAddress,userRank"/>
+        </dwr:convert>
+
+    </dwr:configuration>
+    <!--dwr配置-->
+    <bean id="dwrUserService" class="com.supermarket.dwrsupport.UserSupport">
+        <!--可以调用的JavaScript名-->
+        <dwr:remote javascript="UserService">
+            <!--允许执行的方法-->
+            <dwr:include method="getUsers"/>
+            <dwr:include method="QueryUserById"/>
+            <dwr:include method="QueryUserPages"/>
+            <dwr:include method="getQueryUsers" />
+            <dwr:include method="getQueryUsers_etc" />
+        </dwr:remote>
+        <!--注入服务类-->
+        <property name="service" ref="userService"/>
+    </bean>
+
+
+    <bean id="dwrOxalisService" class="com.supermarket.dwrsupport.OxalisSupport">
+        <!--可以调用的JavaScript名-->
+        <dwr:remote javascript="OxalisService">
+            <!--允许执行的方法-->
+            <dwr:include method="getOxalis"/>
+            <dwr:include method="QueryOxalisById"/>
+            <dwr:include method="getOxalisByPage"/>
+            <dwr:include method="getOxalisQueryPage" />
+            <dwr:include method="getOxalisQueryPage_etc" />
+        </dwr:remote>
+        <!--注入服务类-->
+        <property name="os" ref="oxalisService"/>
+        <property name="ss" ref="serveService"/>
+    </bean>
+
+    <bean id="dwrServeService" class="com.supermarket.dwrsupport.ServeSupport">
+        <!--可以调用的JavaScript名-->
+        <dwr:remote javascript="ServeService">
+            <!--允许执行的方法-->
+            <dwr:include method="getServe"/>
+            <dwr:include method="QueryServeById"/>
+            <dwr:include method="getServeByPage"/>
+            <dwr:include method="serveCompoundQueryInputPages"/>
+            <dwr:include method="serveCompoundQueryInputPages_ecc"/>
+        </dwr:remote>
+        <!--注入服务类-->
+        <property name="ss" ref="serveService"/>
+    </bean>
+
+    <bean id="dwrLogsService" class="com.supermarket.dwrsupport.LogsSupport">
+        <!--可以调用的JavaScript名-->
+        <dwr:remote javascript="LogsService">
+            <!--允许执行的方法-->
+            <dwr:include method="getLogs"/>
+            <dwr:include method="logCompoundQuery"/>
+            <dwr:include method="logCompoundQueryInputPages"/>
+            <dwr:include method="getPages"/>
+        </dwr:remote>
+        <!--注入服务类-->
+        <property name="ls" ref="logService"/>
+    </bean>
+
+    <!--导入配置-->
+    <import resource="applicationContext-beans.xml"/>
+</beans>
