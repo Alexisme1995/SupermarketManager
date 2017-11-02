@@ -41,21 +41,7 @@
 添加供应商(0)，查看供应商详细信息(0,1)，更改供应商资料(0)，删除供应商(0)，综合查询(0,1)
 
 
-![Alt text](https://github.com/Alexisme1995/SupermarketManagerSystem/raw/master/image/3.jpg)
-
-
-
-添加用户(0)，查看用户详细信息(0,1)，更改用户信息(0,3)，删除用户(0,3)，更改用户密码(0,3)，综合查询(0,1)
-
-
-![Alt text](https://github.com/Alexisme1995/SupermarketManagerSystem/raw/master/image/4.jpg)
-
-![Alt text](https://github.com/Alexisme1995/SupermarketManagerSystem/raw/master/image/6.jpg)
-
-![Alt text](https://github.com/Alexisme1995/SupermarketManagerSystem/raw/master/image/7.jpg)
-
-![Alt text](https://github.com/Alexisme1995/SupermarketManagerSystem/raw/master/image/8.jpg)
-
+![Alt text](https://github.com/Alexisme1995/SupermarketManagerSystem/raw/master/image/3.jpg
 
 
 操作日志(0,1)，综合查询(0,1)
